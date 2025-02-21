@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -64,3 +65,6 @@
     @apply bg-background text-foreground;
   }
 }
+=======
+@import "tailwindcss";
+>>>>>>> d04ade7 (Add frontend boilerplate in monorepo)

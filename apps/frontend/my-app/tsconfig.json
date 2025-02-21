@@ -10,6 +10,7 @@
     {
       "path": "./tsconfig.spec.json"
     }
+<<<<<<< HEAD
   ],
   "compilerOptions": {
     "baseUrl": ".",
@@ -17,4 +18,7 @@
       "@/*": ["./src/*"]
     }
   }
+=======
+  ]
+>>>>>>> d04ade7 (Add frontend boilerplate in monorepo)
 }

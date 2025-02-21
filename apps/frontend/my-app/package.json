@@ -17,7 +17,7 @@
     "test": "vitest --run",
     "test:coverage": "vitest --coverage --run"
   },
-  "dependencies": {
+"dependencies": {
     "@repo/ui": "workspace:*",
     "@tanstack/vue-query": "^5.66.9",
     "@tanstack/vue-table": "^8.21.2",
@@ -64,3 +64,6 @@
     "vue-tsc": "^2.2.0"
   }
 }
+
+ 
+

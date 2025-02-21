@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { cn } from '@/lib/utils'
+<<<<<<< HEAD
 import { Primitive, type PrimitiveProps } from 'reka-ui'
+=======
+import { Primitive, type PrimitiveProps } from 'radix-vue'
+>>>>>>> d04ade7 (Add frontend boilerplate in monorepo)
 import { type ButtonVariants, buttonVariants } from '.'
 
 interface Props extends PrimitiveProps {

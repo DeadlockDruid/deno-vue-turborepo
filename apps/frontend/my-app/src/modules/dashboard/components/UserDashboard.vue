@@ -1,4 +1,5 @@
 <script setup lang="ts">
+<<<<<<< HEAD
 import PaginationAndInfiniteScroll from '@/components/PaginationAndInfiniteScroll.vue';
 
 
@@ -6,4 +7,16 @@ import PaginationAndInfiniteScroll from '@/components/PaginationAndInfiniteScrol
 
 <template>
   <PaginationAndInfiniteScroll />
+=======
+import { useAuthStore } from '@/modules/auth/store';
+
+const authStore = useAuthStore();
+</script>
+
+<template>
+  <div>
+    <h1>Dashboard</h1>
+    <p>Welcome, {{ authStore.user?.email || 'Guest' }}</p>
+  </div>
+>>>>>>> d04ade7 (Add frontend boilerplate in monorepo)
 </template>

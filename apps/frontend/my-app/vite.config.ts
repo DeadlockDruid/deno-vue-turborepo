@@ -1,9 +1,17 @@
 import { defineConfig } from 'vite'
+<<<<<<< HEAD
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import path from 'path'
 import autoprefixer from 'autoprefixer'
 import tailwind from 'tailwindcss'
+=======
+import tailwindcss from '@tailwindcss/vite'
+import autoprefixer from 'autoprefixer'
+import vue from '@vitejs/plugin-vue'
+import vueDevTools from 'vite-plugin-vue-devtools'
+import path from 'path'
+>>>>>>> d04ade7 (Add frontend boilerplate in monorepo)
 import fs from 'fs'
 
 export default defineConfig(() => {
@@ -34,10 +42,17 @@ export default defineConfig(() => {
     },
     css: {
       postcss: {
+<<<<<<< HEAD
         plugins: [tailwind(), autoprefixer()],
       },
     },
     plugins: [vue(), vueDevTools()],
+=======
+        plugins: [autoprefixer()],
+      },
+    },
+    plugins: [vue(), vueDevTools(), tailwindcss()],
+>>>>>>> d04ade7 (Add frontend boilerplate in monorepo)
     define: viteDefine,
   }
 })

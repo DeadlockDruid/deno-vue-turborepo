@@ -1,5 +1,6 @@
 {
   "$schema": "https://shadcn-vue.com/schema.json",
+<<<<<<< HEAD
   "style": "new-york",
   "typescript": true,
   "tailwind": {
@@ -17,4 +18,21 @@
     "lib": "@/lib"
   },
   "iconLibrary": "lucide"
+=======
+  "style": "default",
+  "typescript": true,
+  "tsConfigPath": "./tsconfig.json",
+  "tailwind": {
+    "config": "tailwind.config.js",
+    "css": "src/assets/main.css",
+    "baseColor": "slate",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "framework": "vite",
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils"
+  }
+>>>>>>> d04ade7 (Add frontend boilerplate in monorepo)
 }
