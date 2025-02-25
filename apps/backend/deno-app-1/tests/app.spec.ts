@@ -11,7 +11,6 @@ Deno.test("Hono App Endpoints", async (t) => {
     const response = await app.fetch(
       new Request("http://localhost/api", { method: "GET" }),
     );
-    const text = await response.text();
     expect(response.status).toBe(200);
   });
 
