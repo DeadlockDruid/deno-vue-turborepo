@@ -7,7 +7,7 @@
     "dev": "deno task start",
     "format": "deno task fmt",
     "lint": "deno lint --config deno.json",
-    "test": "deno test --allow-env --allow-net --coverage=coverage/ --permit-no-files tests/** --no-check"
+    "test": "deno test --allow-env --allow-net --allow-sys --allow-read --coverage=coverage/ --permit-no-files tests/** --no-check"
   },
   "dependencies": {
     "@repo/zod-schemas": "workspace:*",
