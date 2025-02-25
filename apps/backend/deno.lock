@@ -2,7 +2,7 @@
   "version": "4",
   "specifiers": {
     "jsr:@duesabati/esbuild-deno-plugin@*": "0.2.4",
-    "jsr:@hono/hono@^4.6.15": "4.6.17",
+    "jsr:@hono/hono@^4.6.15": "4.6.19",
     "jsr:@std/assert@*": "1.0.11",
     "jsr:@std/assert@^1.0.10": "1.0.11",
     "jsr:@std/assert@^1.0.11": "1.0.11",
@@ -29,8 +29,8 @@
         "jsr:@std/path@1.0.2"
       ]
     },
-    "@hono/hono@4.6.17": {
-      "integrity": "932fcc61d043b14a8b2cb65242716eb32da44e91f2ee117fd7390508669fea31"
+    "@hono/hono@4.6.19": {
+      "integrity": "5ba1bd0ef74449c0a647f029e29896776c30fb64aefbcef8724af4ce4846791b"
     },
     "@std/assert@1.0.11": {
       "integrity": "2461ef3c368fe88bc60e186e7744a93112f16fd110022e113a0849e94d1c83c1",
@@ -1041,11 +1041,5 @@
     "https://raw.githubusercontent.com/lodash/lodash/4.17.21-es/zipObject.js": "e069bf473251b19f39587b9bdbfce017d0cd0ec2abe835fedcd1c9ab68a0ac4f",
     "https://raw.githubusercontent.com/lodash/lodash/4.17.21-es/zipObjectDeep.js": "5ace286d0c9b25960c1e1ffd11e4d1d9eb10c847c99d2ac6ac56460367262edb",
     "https://raw.githubusercontent.com/lodash/lodash/4.17.21-es/zipWith.js": "0ff58c20b2716a05db1d0e72b94b4e3c55c6e293e6e6ed8c47abf17706fc9a5f"
-  },
-  "workspace": {
-    "dependencies": [
-      "jsr:@hono/hono@^4.6.15",
-      "npm:lodash@*"
-    ]
   }
 }
