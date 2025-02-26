@@ -1,0 +1,108 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: postgres_db
+    restart: always
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app_network
+
+  deno-app-1:
+    build:
+      context: .
+      dockerfile: apps/backend/deno-app-1/Dockerfile
+      args:
+        DENO_VERSION: ${DENO_VERSION}
+    container_name: deno-app-1
+    working_dir: /app/apps/backend/deno-app-1
+    environment:
+      - PORT=8000
+      - DENO_VERSION=${DENO_VERSION}
+      - DENO_DIR=/deno_cache
+      - DENO_HOME=/deno_home
+    volumes:
+      - .:/app
+      - deno_cache:/deno_cache
+      - deno_home:/deno_home
+    ports:
+      - "8000:8000"
+    command: ["deno", "task", "start"]
+
+  deno-app-2:
+    build:
+      context: .
+      dockerfile: apps/backend/deno-app-2/Dockerfile
+      args:
+        DENO_VERSION: ${DENO_VERSION}
+    container_name: deno-app-2
+    working_dir: /app/apps/backend/deno-app-2
+    environment:
+      - PORT=8001
+      - DENO_VERSION=${DENO_VERSION}
+      - DENO_DIR=/deno_cache
+      - DENO_HOME=/deno_home
+    volumes:
+      - .:/app
+      - deno_cache:/deno_cache
+      - deno_home:/deno_home
+    ports:
+      - "8001:8001"
+    command: ["deno", "task", "start"]
+
+  vue-app-1:
+    build:
+      context: .
+      dockerfile: apps/frontend/vue-app-1/Dockerfile
+      args:
+        NODE_VERSION: ${NODE_VERSION}
+    container_name: vue-app-1
+    working_dir: /app/apps/frontend/vue-app-1
+    environment:
+      - NODE_ENV=development
+      - NODE_VERSION=${NODE_VERSION}
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/apps/frontend/vue-app-1/node_modules
+    ports:
+      - "5173:5173"
+    command: ["pnpm", "run", "dev", "--host", "0.0.0.0", "--port", "5173"]
+    networks:
+      - app_network
+
+  vue-app-2:
+    build:
+      context: .
+      dockerfile: apps/frontend/vue-app-2/Dockerfile
+      args:
+        NODE_VERSION: ${NODE_VERSION}
+    container_name: vue-app-2
+    working_dir: /app/apps/frontend/vue-app-2
+    environment:
+      - NODE_ENV=development
+      - NODE_VERSION=${NODE_VERSION}
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/apps/frontend/vue-app-2/node_modules
+    ports:
+      - "5174:5174"
+    command: ["pnpm", "run", "dev", "--host", "0.0.0.0", "--port", "5174"]
+    networks:
+      - app_network
+
+volumes:
+  postgres_data:
+  deno_cache:
+  deno_home:
+
+networks:
+  app_network:
+    driver: bridge
