@@ -1,17 +1,15 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
-import AppNavbar from '@/components/AppNavbar.vue'
-import '@repo/ui/styles.css';
-import PaginationAndInfiniteScroll from './components/PaginationAndInfiniteScroll.vue';
-
+import '@repo/ui/styles.css'
+import PaginationAndInfiniteScroll from './components/PaginationAndInfiniteScroll.vue'
+import DefaultLayout from './components/layout/DefaultLayout.vue'
 </script>
 
 <template>
-  <header>
-    <AppNavbar />
-  </header>
-  <PaginationAndInfiniteScroll />
-  <RouterView />
+  <DefaultLayout>
+    <PaginationAndInfiniteScroll />
+    <RouterView />
+  </DefaultLayout>
 </template>
 
 <style scoped></style>
