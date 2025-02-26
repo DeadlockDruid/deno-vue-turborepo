@@ -20,6 +20,8 @@
   "dependencies": {
     "@repo/ui": "workspace:*",
     "@tailwindcss/vite": "^4.0.0",
+    "@tanstack/vue-query": "^5.66.9",
+    "axios": "^1.7.9",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-vue-next": "^0.474.0",
