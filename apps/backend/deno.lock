@@ -14,10 +14,17 @@
     "jsr:@std/path@1.0.2": "1.0.2",
     "jsr:@std/path@^1.0.2": "1.0.2",
     "jsr:@std/testing@*": "1.0.9",
+    "npm:@hono/zod-openapi@~0.18.3": "0.18.3_hono@4.6.18_zod@3.24.1",
+    "npm:@scalar/hono-api-reference@*": "0.5.168_hono@4.6.18",
     "npm:@types/node@*": "22.5.4",
+    "npm:drizzle-orm@~0.38.4": "0.38.4_pg@8.13.1",
+    "npm:drizzle-zod@0.5.1": "0.5.1_drizzle-orm@0.38.4__pg@8.13.1_zod@3.24.1_pg@8.13.1",
     "npm:esbuild@0.23.0": "0.23.0",
     "npm:flagsmith-nodejs@*": "5.1.1",
-    "npm:lodash@*": "4.17.21"
+    "npm:lodash@*": "4.17.21",
+    "npm:pg@^8.13.1": "8.13.1",
+    "npm:pino@*": "8.21.0",
+    "npm:stoker@^1.4.2": "1.4.2_@asteasolutions+zod-to-openapi@7.3.0__zod@3.24.1_@hono+zod-openapi@0.18.3__hono@4.6.18__zod@3.24.1_hono@4.6.18_openapi3-ts@4.4.0"
   },
   "jsr": {
     "@duesabati/esbuild-deno-plugin@0.2.4": {
@@ -72,6 +79,13 @@
     }
   },
   "npm": {
+    "@asteasolutions/zod-to-openapi@7.3.0_zod@3.24.1": {
+      "integrity": "sha512-7tE/r1gXwMIvGnXVUdIqUhCU1RevEFC4Jk6Bussa0fk1ecbnnINkZzj1EOAJyE/M3AI25DnHT/zKQL1/FPFi8Q==",
+      "dependencies": [
+        "openapi3-ts",
+        "zod"
+      ]
+    },
     "@esbuild/aix-ppc64@0.23.0": {
       "integrity": "sha512-3sG8Zwa5fMcA9bgqB8AfWPQ+HFke6uD3h1s3RIwUNK8EG7a4buxvuFTs3j1IMs2NXAk9F30C/FF4vxRgQCcmoQ=="
     },
@@ -144,10 +158,50 @@
     "@esbuild/win32-x64@0.23.0": {
       "integrity": "sha512-Arm+WgUFLUATuoxCJcahGuk6Yj9Pzxd6l11Zb/2aAuv5kWWvvfhLFo2fni4uSK5vzlUdCGZ/BdV5tH8klj8p8g=="
     },
+    "@hono/zod-openapi@0.18.3_hono@4.6.18_zod@3.24.1": {
+      "integrity": "sha512-bNlRDODnp7P9Fs13ZPajEOt13G0XwXKfKRHMEFCphQsFiD1Y+twzHaglpNAhNcflzR1DQwHY92ZS06b4LTPbIQ==",
+      "dependencies": [
+        "@asteasolutions/zod-to-openapi",
+        "@hono/zod-validator",
+        "hono",
+        "zod"
+      ]
+    },
+    "@hono/zod-validator@0.4.2_hono@4.6.18_zod@3.24.1": {
+      "integrity": "sha512-1rrlBg+EpDPhzOV4hT9pxr5+xDVmKuz6YJl+la7VCwK6ass5ldyKm5fD+umJdV2zhHD6jROoCCv8NbTwyfhT0g==",
+      "dependencies": [
+        "hono",
+        "zod"
+      ]
+    },
+    "@scalar/hono-api-reference@0.5.168_hono@4.6.18": {
+      "integrity": "sha512-kNtmHki6vaNbCpCo3eJQT+UOz+8MG/9l4XqnD9LAmPahBsKrmVvnwzpRYCovHvT8gf2bIHqFdhJUAz5sxF/MNA==",
+      "dependencies": [
+        "@scalar/types",
+        "hono"
+      ]
+    },
+    "@scalar/openapi-types@0.1.6": {
+      "integrity": "sha512-V+KnESyVJqorJzEN0QFlu3tAImCHjnvPov6QcQvjfY7s0+CjrI3rRO3oVIRlXURTQrQGrnhxvK0SkXGAZ+dxvw=="
+    },
+    "@scalar/types@0.0.27": {
+      "integrity": "sha512-5f293PX78gwE3NwcBNXf7+qc9OIB6lYsRpzGZts7eaN3aN9i23ysWewF76DOs74oARRP5LgNBMC7JCo9dIxM1Q==",
+      "dependencies": [
+        "@scalar/openapi-types",
+        "@unhead/schema"
+      ]
+    },
     "@types/node@22.5.4": {
       "integrity": "sha512-FDuKUJQm/ju9fT/SeX/6+gBzoPzlVCzfzmGkwKvRHQVxi4BntVbyIwf6a4Xn62mrvndLiml6z/UBXIdEVjQLXg==",
       "dependencies": [
         "undici-types"
+      ]
+    },
+    "@unhead/schema@1.11.18": {
+      "integrity": "sha512-a3TA/OJCRdfbFhcA3Hq24k1ZU1o9szicESrw8DZcGyQFacHnh84mVgnyqSkMnwgCmfN4kvjSiTBlLEHS6+wATw==",
+      "dependencies": [
+        "hookable",
+        "zhead"
       ]
     },
     "abort-controller@3.0.0": {
@@ -167,6 +221,19 @@
       "dependencies": [
         "base64-js",
         "ieee754"
+      ]
+    },
+    "drizzle-orm@0.38.4_pg@8.13.1": {
+      "integrity": "sha512-s7/5BpLKO+WJRHspvpqTydxFob8i1vo2rEx4pY6TGY7QSMuUfWUuzaY0DIpXCkgHOo37BaFC+SJQb99dDUXT3Q==",
+      "dependencies": [
+        "pg"
+      ]
+    },
+    "drizzle-zod@0.5.1_drizzle-orm@0.38.4__pg@8.13.1_zod@3.24.1_pg@8.13.1": {
+      "integrity": "sha512-C/8bvzUH/zSnVfwdSibOgFjLhtDtbKYmkbPbUCq46QZyZCH6kODIMSOgZ8R7rVjoI+tCj3k06MRJMDqsIeoS4A==",
+      "dependencies": [
+        "drizzle-orm",
+        "zod"
       ]
     },
     "esbuild@0.23.0": {
@@ -215,6 +282,12 @@
         "undici-types"
       ]
     },
+    "hono@4.6.18": {
+      "integrity": "sha512-Fu7hEPvdwtPG8LqSAiPn8p8HjD+PDxrP/HVnwRBnwtVKOn5zDDKsw0ma2Xt58oq97Rlp3t/mRNADEV/Ym6cDng=="
+    },
+    "hookable@5.5.3": {
+      "integrity": "sha512-Yc+BQe8SvoXH1643Qez1zqLRmbA5rCL+sSmk6TVos0LWVfNIB7PGncdlId77WzLGSIB5KaWgTaNTs2lNVEI6VQ=="
+    },
     "ieee754@1.2.1": {
       "integrity": "sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA=="
     },
@@ -223,6 +296,57 @@
     },
     "on-exit-leak-free@2.1.2": {
       "integrity": "sha512-0eJJY6hXLGf1udHwfNftBqH+g73EU4B504nZeKpz1sYRKafAghwxEJunB2O7rDZkL4PGfsMVnTXZ2EjibbqcsA=="
+    },
+    "openapi3-ts@4.4.0": {
+      "integrity": "sha512-9asTNB9IkKEzWMcHmVZE7Ts3kC9G7AFHfs8i7caD8HbI76gEjdkId4z/AkP83xdZsH7PLAnnbl47qZkXuxpArw==",
+      "dependencies": [
+        "yaml"
+      ]
+    },
+    "pg-cloudflare@1.1.1": {
+      "integrity": "sha512-xWPagP/4B6BgFO+EKz3JONXv3YDgvkbVrGw2mTo3D6tVDQRh1e7cqVGvyR3BE+eQgAvx1XhW/iEASj4/jCWl3Q=="
+    },
+    "pg-connection-string@2.7.0": {
+      "integrity": "sha512-PI2W9mv53rXJQEOb8xNR8lH7Hr+EKa6oJa38zsK0S/ky2er16ios1wLKhZyxzD7jUReiWokc9WK5nxSnC7W1TA=="
+    },
+    "pg-int8@1.0.1": {
+      "integrity": "sha512-WCtabS6t3c8SkpDBUlb1kjOs7l66xsGdKpIPZsg4wR+B3+u9UAum2odSsF9tnvxg80h4ZxLWMy4pRjOsFIqQpw=="
+    },
+    "pg-pool@3.7.0_pg@8.13.1": {
+      "integrity": "sha512-ZOBQForurqh4zZWjrgSwwAtzJ7QiRX0ovFkZr2klsen3Nm0aoh33Ls0fzfv3imeH/nw/O27cjdz5kzYJfeGp/g==",
+      "dependencies": [
+        "pg"
+      ]
+    },
+    "pg-protocol@1.7.0": {
+      "integrity": "sha512-hTK/mE36i8fDDhgDFjy6xNOG+LCorxLG3WO17tku+ij6sVHXh1jQUJ8hYAnRhNla4QVD2H8er/FOjc/+EgC6yQ=="
+    },
+    "pg-types@2.2.0": {
+      "integrity": "sha512-qTAAlrEsl8s4OiEQY69wDvcMIdQN6wdz5ojQiOy6YRMuynxenON0O5oCpJI6lshc6scgAY8qvJ2On/p+CXY0GA==",
+      "dependencies": [
+        "pg-int8",
+        "postgres-array",
+        "postgres-bytea",
+        "postgres-date",
+        "postgres-interval"
+      ]
+    },
+    "pg@8.13.1": {
+      "integrity": "sha512-OUir1A0rPNZlX//c7ksiu7crsGZTKSOXJPgtNiHGIlC9H0lO+NC6ZDYksSgBYY/thSWhnSRBv8w1lieNNGATNQ==",
+      "dependencies": [
+        "pg-cloudflare",
+        "pg-connection-string",
+        "pg-pool",
+        "pg-protocol",
+        "pg-types",
+        "pgpass"
+      ]
+    },
+    "pgpass@1.0.5": {
+      "integrity": "sha512-FdW9r/jQZhSeohs1Z3sI1yxFQNFvMcnmfuj4WBMUTxOrAyLMaTcE1aAMBiTlbMNaXvBCQuVi0R7hd8udDSP7ug==",
+      "dependencies": [
+        "split2"
+      ]
     },
     "pino-abstract-transport@1.2.0": {
       "integrity": "sha512-Guhh8EZfPCfH+PMXAb6rKOjGQEoy0xlAIn+irODG5kgfYV+BQ0rGYYWTIel3P5mmyXqkYkPmdIkywsn6QKUR1Q==",
@@ -248,6 +372,21 @@
         "safe-stable-stringify",
         "sonic-boom",
         "thread-stream"
+      ]
+    },
+    "postgres-array@2.0.0": {
+      "integrity": "sha512-VpZrUqU5A69eQyW2c5CA1jtLecCsN2U/bD6VilrFDWq5+5UIEVO7nazS3TEcHf1zuPYO/sqGvUvW62g86RXZuA=="
+    },
+    "postgres-bytea@1.0.0": {
+      "integrity": "sha512-xy3pmLuQqRBZBXDULy7KbaitYqLcmxigw14Q5sj8QBVLqEwXfeybIKVWiqAXTlcvdvb0+xkOtDbfQMOf4lST1w=="
+    },
+    "postgres-date@1.0.7": {
+      "integrity": "sha512-suDmjLVQg78nMK2UZ454hAG+OAW+HQPZ6n++TNDUX+L0+uUlLywnoxJKDou51Zm+zTCjrCl0Nq6J9C5hP9vK/Q=="
+    },
+    "postgres-interval@1.2.0": {
+      "integrity": "sha512-9ZhXKM/rw350N1ovuWHbGxnGh/SNJ4cnxHiM0rxE4VN41wsg8P8zWn9hv/buK00RP4WvlOyr/RBDiptyxVbkZQ==",
+      "dependencies": [
+        "xtend"
       ]
     },
     "process-warning@3.0.0": {
@@ -290,6 +429,15 @@
     "split2@4.2.0": {
       "integrity": "sha512-UcjcJOWknrNkF6PLX83qcHM6KHgVKNkV62Y8a5uYDVv9ydGQVwAHMKqHdJje1VTWpljG0WYpCDhrCdAOYH4TWg=="
     },
+    "stoker@1.4.2_@asteasolutions+zod-to-openapi@7.3.0__zod@3.24.1_@hono+zod-openapi@0.18.3__hono@4.6.18__zod@3.24.1_hono@4.6.18_openapi3-ts@4.4.0": {
+      "integrity": "sha512-zna86ZzC3fnMOIkuO+1vRMfcRw7SpC/7yafRb0u8DwDVig2pPh6POVnGB7t2A5t/rMvyr7hE7tjXTPvW8bhJKg==",
+      "dependencies": [
+        "@asteasolutions/zod-to-openapi",
+        "@hono/zod-openapi",
+        "hono",
+        "openapi3-ts"
+      ]
+    },
     "string_decoder@1.3.0": {
       "integrity": "sha512-hkRX8U1WjJFd8LsDJ2yQ/wWWxaopEsABU1XfkM8A+j0+85JAGppt16cr1Whg6KIbb4okU6Mql6BOj+uup/wKeA==",
       "dependencies": [
@@ -304,9 +452,33 @@
     },
     "undici-types@6.19.8": {
       "integrity": "sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw=="
+    },
+    "xtend@4.0.2": {
+      "integrity": "sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ=="
+    },
+    "yaml@2.7.0": {
+      "integrity": "sha512-+hSoy/QHluxmC9kCIJyL/uyFmLmc+e5CFR5Wa+bpIhIj85LVb9ZH2nVnqrHoSvKogwODv0ClqZkmiSSaIH5LTA=="
+    },
+    "zhead@2.2.4": {
+      "integrity": "sha512-8F0OI5dpWIA5IGG5NHUg9staDwz/ZPxZtvGVf01j7vHqSyZ0raHY+78atOVxRqb73AotX22uV1pXt3gYSstGag=="
+    },
+    "zod@3.24.1": {
+      "integrity": "sha512-muH7gBL9sI1nciMZV67X5fTKKBLtwpZ5VBp1vsOQzj1MhrBZ4wlVCm3gedKZWLp0Oyel8sIGfeiz54Su+OVT+A=="
     }
   },
+  "redirects": {
+    "https://esm.sh/@asteasolutions/zod-to-openapi@^7.1.0?target=denonext": "https://esm.sh/@asteasolutions/zod-to-openapi@7.3.0?target=denonext",
+    "https://esm.sh/@hono/zod-openapi@latest": "https://esm.sh/@hono/zod-openapi@0.18.4",
+    "https://esm.sh/@hono/zod-validator@^0.4.1?target=denonext": "https://esm.sh/@hono/zod-validator@0.4.3?target=denonext",
+    "https://esm.sh/hono@%3E=3.9.0/validator?target=denonext": "https://esm.sh/hono@4.7.2/validator?target=denonext",
+    "https://esm.sh/hono@%3E=4.3.6/utils/url?target=denonext": "https://esm.sh/hono@4.7.2/utils/url?target=denonext",
+    "https://esm.sh/hono@%3E=4.3.6?target=denonext": "https://esm.sh/hono@4.7.2?target=denonext",
+    "https://esm.sh/zod@3.*?target=denonext": "https://esm.sh/zod@3.24.2?target=denonext",
+    "https://esm.sh/zod@^3.19.1?target=denonext": "https://esm.sh/zod@3.24.2?target=denonext"
+  },
   "remote": {
+    "https://deno.land/std@0.208.0/async/delay.ts": "a6142eb44cdd856b645086af2b811b1fcce08ec06bb7d50969e6a872ee9b8659",
+    "https://deno.land/std@0.208.0/http/server.ts": "f3cde6672e631d3e00785743cfa96bfed275618c0352c5ae84abbe5a2e0e4afc",
     "https://deno.land/std@0.224.0/assert/assert.ts": "09d30564c09de846855b7b071e62b5974b001bb72a4b797958fe0660e7849834",
     "https://deno.land/std@0.224.0/assert/assertion_error.ts": "ba8752bd27ebc51f723702fac2f54d3e94447598f54264a6653d6413738a8917",
     "https://deno.land/std@0.224.0/path/_common/assert_path.ts": "dbdd757a465b690b2cc72fc5fb7698c51507dec6bfafce4ca500c46b76ff7bd8",
@@ -386,6 +558,8 @@
     "https://deno.land/std@0.224.0/path/windows/resolve.ts": "8dae1dadfed9d46ff46cc337c9525c0c7d959fb400a6308f34595c45bdca1972",
     "https://deno.land/std@0.224.0/path/windows/to_file_url.ts": "40e560ee4854fe5a3d4d12976cef2f4e8914125c81b11f1108e127934ced502e",
     "https://deno.land/std@0.224.0/path/windows/to_namespaced_path.ts": "4ffa4fb6fae321448d5fe810b3ca741d84df4d7897e61ee29be961a6aac89a4c",
+    "https://deno.land/x/dotenv@v3.2.0/mod.ts": "077b48773de9205266a0b44c3c3a3c3083449ed64bb0b6cc461b95720678d38e",
+    "https://deno.land/x/dotenv@v3.2.0/util.ts": "693730877b13f8ead2b79b2aa31e2a0652862f7dc0c5f6d2f313f4d39c7b7670",
     "https://deno.land/x/lodash@4.17.19/lodash.js": "efa0ecfaf5548e32a16e18d3700436cd146c48b4f3712f095dae6f00100018e5",
     "https://deno.land/x/zod@v3.24.1/ZodError.ts": "27b41119736fcdc69cc72e63838bed1e9e1210c7ce721211f02256e06b443b55",
     "https://deno.land/x/zod@v3.24.1/errors.ts": "5285922d2be9700cc0c70c95e4858952b07ae193aa0224be3cbd5cd5567eabef",
@@ -401,6 +575,37 @@
     "https://deno.land/x/zod@v3.24.1/mod.ts": "ec6e2b1255c1a350b80188f97bd0a6bac45801bb46fc48f50b9763aa66046039",
     "https://deno.land/x/zod@v3.24.1/standard-schema.ts": "4abb2e7bd784fb95d219584673971bb317e74fb4fd0c74c196b558ba46df4456",
     "https://deno.land/x/zod@v3.24.1/types.ts": "ed67267a459b6e0d3ceb904072d222c58eda6a6f03f85cae3fba8d1188ce809e",
+    "https://esm.sh/@asteasolutions/zod-to-openapi@7.3.0/denonext/zod-to-openapi.mjs": "653af2b4296ba6ef08f801993f03dc5b8147368e71477ed9e25382967659b354",
+    "https://esm.sh/@asteasolutions/zod-to-openapi@7.3.0?target=denonext": "ebc7724998f1965f0ff2277dccb2634f90e90852f3546de2487ff3b5cf432783",
+    "https://esm.sh/@hono/zod-openapi@0.18.4": "8deed271944eed2e3f0eb9f6f4a22daf80cabd9c70fea64dc6bfafe7ab4c874d",
+    "https://esm.sh/@hono/zod-openapi@0.18.4/denonext/zod-openapi.mjs": "627043c5315250b2fa2a01ba1508a4566cb66107882ed78effa6ef5870fc0619",
+    "https://esm.sh/@hono/zod-validator@0.4.3/denonext/zod-validator.mjs": "bad2f1ac32f58c948d9e383adab86e31d71c0c4777fc00e8eabb70938281ccbb",
+    "https://esm.sh/@hono/zod-validator@0.4.3?target=denonext": "22c6570b2c2aa332afa29b35742dcd0b31e7441f89f93c75f16c9bab11a07386",
+    "https://esm.sh/hono@4.7.2/denonext/cookie.mjs": "28b21df30e064401703cdedeb75c0cecbbab523519282b372d39b95fdb1350c8",
+    "https://esm.sh/hono@4.7.2/denonext/dist/compose.mjs": "987bda03b412f28e2ec2e85569662b9fb71e60f6ed89f7efe75ef03bcfa5edc9",
+    "https://esm.sh/hono@4.7.2/denonext/dist/context.mjs": "e08545c1d9ac0936d9df7f6722ff985ada2bb9a449329f03af52aa2c6fa56579",
+    "https://esm.sh/hono@4.7.2/denonext/dist/hono.mjs": "61ff9e54c53bc1207cdb564dbe4ae0203ee90477c516c44354ce0b99e84a1176",
+    "https://esm.sh/hono@4.7.2/denonext/dist/utils/body.mjs": "8dd0a9db01337f497d75eb2ed0f90c47892f41bfc221db7233db158041ec2f51",
+    "https://esm.sh/hono@4.7.2/denonext/dist/utils/buffer.mjs": "eb9428f085b78143e14f79a8bb5e48ff20fcbe440a39e4fce7ceba1079243272",
+    "https://esm.sh/hono@4.7.2/denonext/dist/utils/constants.mjs": "2f9029f35b35c2cdf4c5f08f2955c26bb1ce518bf4560a4fb6ecb9d92b023b7e",
+    "https://esm.sh/hono@4.7.2/denonext/dist/utils/cookie.mjs": "14d57a56ca2320a61b8f0b0af0527519b3feb8a310613d4ca81083381db0e6e8",
+    "https://esm.sh/hono@4.7.2/denonext/dist/utils/html.mjs": "9b0d7b39a08e60cb960c72db05d51d5b2f880ee453f5e73982b1d2a0dac10bb1",
+    "https://esm.sh/hono@4.7.2/denonext/dist/utils/url.mjs": "9faa0732c79c44d12fcf76525ff8045e99c5f391a6a367554073ac1e782c7611",
+    "https://esm.sh/hono@4.7.2/denonext/hono-base.mjs": "6858730b33af950055b15ea9cc0cc79a47e6d9d9822e3388936593c0e6a8e868",
+    "https://esm.sh/hono@4.7.2/denonext/hono.mjs": "18ebcd233340e91488bb1acef662aea5e244c208af2dd627c3c3240dfef2d2b1",
+    "https://esm.sh/hono@4.7.2/denonext/http-exception.mjs": "fbadf0547537dcabcdfcdc55798d25a46b26247a4661d0a9f524de9d31c04ef3",
+    "https://esm.sh/hono@4.7.2/denonext/request.mjs": "8b6d4e3ebeee68fd26de6492edabd3f8257cddfbc25f9e56abe3a8765b1cd705",
+    "https://esm.sh/hono@4.7.2/denonext/router.mjs": "0022d09f4619c18e42e5cfaa94e7e075fb7907b3d2a39b0ab40acde0ee740734",
+    "https://esm.sh/hono@4.7.2/denonext/router/reg-exp-router.mjs": "5099b921b9da0dfbd4efc8483bb901f3ab6c66534d38b3b48638b70e852c8c4a",
+    "https://esm.sh/hono@4.7.2/denonext/router/smart-router.mjs": "b989a3e777f3f7ed9f43e7f795560e423e6a76d14d2ad9058ef639d3df878369",
+    "https://esm.sh/hono@4.7.2/denonext/router/trie-router.mjs": "80a651073dc8b806ceeafd638a041329bd2d07056431652721b47f994e8dbc43",
+    "https://esm.sh/hono@4.7.2/denonext/utils/url.mjs": "c4fb99039246bb985865448462bc73bbf6b8161414882eb806168bcd3c11bae1",
+    "https://esm.sh/hono@4.7.2/denonext/validator.mjs": "da527ae29adb6c87438175c911604378876bf18e865711061061336335a837ed",
+    "https://esm.sh/hono@4.7.2/utils/url?target=denonext": "fac1e3ca92ca2fbfad3a278f9ea643572e25fba269b7c1c688cfd0d4e442bd9c",
+    "https://esm.sh/hono@4.7.2/validator?target=denonext": "c6c66c29249910c6125ceaeec41b9c57d74724343925abd4fcc5f1d9cad43239",
+    "https://esm.sh/hono@4.7.2?target=denonext": "0251c4100d1599f6e2345985c1eba4f93c03b829639b902d96862706a8f759dc",
+    "https://esm.sh/zod@3.24.2/denonext/zod.mjs": "742680b93730f63c3a3160f75475b69f661bd353d6b8b46f602c7a685837e76d",
+    "https://esm.sh/zod@3.24.2?target=denonext": "634dc151ffdec010f55988d783c024d926124f7e943e00c27004f73bc5543902",
     "https://raw.githubusercontent.com/lodash/lodash/4.17.21-es/_DataView.js": "0c4811491cd0c415553118f42f9b31112ed58bdb3941358a99deec9347e7a829",
     "https://raw.githubusercontent.com/lodash/lodash/4.17.21-es/_Hash.js": "7221393e8931adc88430d3badefee1568ffccf91a6efcd9dda2be498f4a09551",
     "https://raw.githubusercontent.com/lodash/lodash/4.17.21-es/_LazyWrapper.js": "77e63978b95b1b1dd6d0d8c58eadeab22a58e00e50491b9dccdc285f7a7ab2d0",
@@ -1041,5 +1246,17 @@
     "https://raw.githubusercontent.com/lodash/lodash/4.17.21-es/zipObject.js": "e069bf473251b19f39587b9bdbfce017d0cd0ec2abe835fedcd1c9ab68a0ac4f",
     "https://raw.githubusercontent.com/lodash/lodash/4.17.21-es/zipObjectDeep.js": "5ace286d0c9b25960c1e1ffd11e4d1d9eb10c847c99d2ac6ac56460367262edb",
     "https://raw.githubusercontent.com/lodash/lodash/4.17.21-es/zipWith.js": "0ff58c20b2716a05db1d0e72b94b4e3c55c6e293e6e6ed8c47abf17706fc9a5f"
+  },
+  "workspace": {
+    "members": {
+      "deno-app-1": {
+        "packageJson": {
+          "dependencies": [
+            "npm:drizzle-orm@~0.39.3",
+            "npm:stoker@^1.4.2"
+          ]
+        }
+      }
+    }
   }
 }
