@@ -1,8 +1,8 @@
 <!-- src/components/layout/DefaultLayout.vue -->
 <template>
-  <div>
+  <div class="min-h-screen flex flex-col">
     <BasicHeader />
-    <BasicContainer>
+    <BasicContainer class="flex-grow">
       <slot />
     </BasicContainer>
     <BasicFooter />

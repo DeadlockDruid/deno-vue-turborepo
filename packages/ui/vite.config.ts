@@ -1,16 +1,23 @@
 import { defineConfig } from 'vite';
-import tailwindcss from '@tailwindcss/vite'
 import autoprefixer from 'autoprefixer'
+import tailwind from 'tailwindcss'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path';
+import path from 'path'
+
 
 export default defineConfig({
-    plugins: [vue(), tailwindcss()],
+    plugins: [vue()],
     css: {
         postcss: {
-            plugins: [autoprefixer()],
+            plugins: [tailwind(), autoprefixer()],
         },
     },
+    resolve: {
+        alias: {
+          '@': path.resolve(__dirname, 'src'), 
+        },
+      },
     build: {
         lib: {
             entry: resolve(__dirname, 'src/index.ts'),
