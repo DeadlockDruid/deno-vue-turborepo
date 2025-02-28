@@ -14,20 +14,20 @@ export const CONSTANTS = {
     INTERNAL_SERVER_ERROR: 500,
     SERVICE_UNAVAILABLE: 503,
     HTTP_VERSION_NOT_SUPPORTED: 505,
-    INVALID_DATA:422
+    INVALID_DATA: 422,
   },
   STATUS_NAMES: {
-    NOT_FOUND: 'Not Found!',
-    BAD_REQUEST: 'Bad Request!',
-    UNAUTHORIZED: 'Un-Authorized Request!',
-    TOKEN_NOT_FOUND: 'Token Not Found!',
-    TOKEN_EXPIRED: 'Session Timedout!',
-    INTERNAL_SERVER_ERROR: 'Internal Server Error',
-    SUCCESS:'Success!',
-    DATA_REMOVED: 'Data removed succfully'
+    NOT_FOUND: "Not Found!",
+    BAD_REQUEST: "Bad Request!",
+    UNAUTHORIZED: "Un-Authorized Request!",
+    TOKEN_NOT_FOUND: "Token Not Found!",
+    TOKEN_EXPIRED: "Session Timedout!",
+    INTERNAL_SERVER_ERROR: "Internal Server Error",
+    SUCCESS: "Success!",
+    DATA_REMOVED: "Data removed succfully",
   },
   ERROR: {
-    NOT_FOUND_ERROR_MESSAGE:'The requested data was not found on this server.',
-    INVALID_REQUEST_DATA:"Invalid request data"
-  }
+    NOT_FOUND_ERROR_MESSAGE: "The requested data was not found on this server.",
+    INVALID_REQUEST_DATA: "Invalid request data",
+  },
 };

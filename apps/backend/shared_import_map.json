@@ -2,18 +2,26 @@
   "imports": {
     "hono": "jsr:@hono/hono@^4.6.15",
     "hono/cors": "jsr:@hono/hono@^4.6.15/cors",
+    "hono/html": "jsr:@hono/hono@^4.6.15/html",
     "zod": "https://deno.land/x/zod@v3.24.1/mod.ts",
     "lodash": "npm:lodash",
-    "@repo/zod-schemas/": "../../packages/zod-schemas/dist/",
     "@hono/zod-openapi": "npm:@hono/zod-openapi@^0.18.3",
     "@types/pg": "npm:@types/pg@^8.11.11",
     "drizzle-kit": "npm:drizzle-kit@^0.30.2",
     "drizzle-orm": "npm:drizzle-orm@^0.38.4",
+    "drizzle-orm/node-postgres": "npm:drizzle-orm@^0.38.4/node-postgres",
+    "drizzle-orm/pg-core": "npm:drizzle-orm@^0.38.4/pg-core",
+    "drizzle-orm/sqlite-core": "npm:drizzle-orm@^0.38.4/sqlite-core",
+    "drizzle-orm/mysql-core": "npm:drizzle-orm@^0.38.4/mysql-core",
     "drizzle-zod": "npm:drizzle-zod@0.5.1",
     "pg": "npm:pg@^8.13.1",
-    "scalar":"npm:@scalar/hono-api-reference",
+    "scalar": "npm:@scalar/hono-api-reference",
     "stoker": "npm:stoker@^1.4.2",
-    "@repo/pino-logger/": "../../packages/pino-logger/dist/" ,
-    "pino": "npm:pino"
+    "stoker/openapi/helpers": "npm:stoker@^1.4.2/openapi/helpers",
+    "pino": "npm:pino",
+    "dotenv": "https://deno.land/x/dotenv@v3.2.0/mod.ts",
+    "@asteasolutions/zod-to-openapi": "npm:@asteasolutions/zod-to-openapi",
+    "@repo/pino-logger/": "../../packages/pino-logger/dist/",
+    "@repo/zod-schemas/": "../../packages/zod-schemas/dist/"
   }
 }

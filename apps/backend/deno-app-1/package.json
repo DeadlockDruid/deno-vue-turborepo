@@ -10,9 +10,7 @@
     "test": "deno test --allow-env --allow-net --allow-sys --allow-read --coverage=coverage/ --permit-no-files tests/** --no-check"
   },
   "dependencies": {
-    "@repo/zod-schemas": "workspace:*",
     "@repo/pino-logger": "workspace:*",
-    "drizzle-orm": "^0.39.3",
-    "stoker": "^1.4.2"
+    "@repo/zod-schemas": "workspace:*"
   }
 }

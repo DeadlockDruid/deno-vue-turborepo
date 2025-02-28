@@ -1,22 +1,16 @@
-import {
-    boolean,
-    pgTable,
-    serial,
-    text,
-  } from "drizzle-orm/pg-core";
-  import { z } from '@hono/zod-openapi';
-  import { createSelectSchema } from 'drizzle-zod';
-  
-  //schema defination
-  export const tasks = pgTable('tasks', {
-    id: serial('id').primaryKey(),
-    name: text('name').notNull(),
-    done: boolean()
-    .default(false)
-  });
+import { boolean, pgTable, serial, text } from "drizzle-orm/pg-core";
+import { z } from "@hono/zod-openapi";
+import { createSelectSchema } from "drizzle-zod";
 
-  //select schema record
-  export const taskSelectSchema = createSelectSchema(tasks);
+//schema defination
+export const tasks = pgTable("tasks", {
+  id: serial("id").primaryKey(),
+  name: text("name").notNull(),
+  done: boolean().default(false),
+});
+
+//select schema record
+export const taskSelectSchema = createSelectSchema(tasks);
 export const idParamsSchema = z.object({
   id: z.coerce.number().openapi({
     param: {
@@ -34,4 +28,3 @@ export const taskPatchSchema = z.object({
   done: z.boolean().optional(),
 });
 
- 

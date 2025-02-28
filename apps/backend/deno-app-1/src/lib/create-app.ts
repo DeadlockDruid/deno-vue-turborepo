@@ -1,19 +1,26 @@
-import { OpenAPIHono } from 'https://esm.sh/@hono/zod-openapi@latest';
-import { pinoLogger } from '@repo/pino-logger/index.js';
-import { defaultHook } from "stoker/openapi";
-import { internalServerErrorResponse, notFoundResponse } from './../utils/commonFunction.ts';
+import { OpenAPIHono } from "@hono/zod-openapi";
+import { pinoLogger } from "@repo/pino-logger/index.js";
+import { openapi as defaultHook } from "stoker";
+import {
+  internalServerErrorResponse,
+  notFoundResponse,
+} from "./../utils/commonFunction.ts";
 
-export function createRouter(){
-    return new OpenAPIHono({ 
-        strict: false,
-        defaultHook
-     });
+export function createRouter() {
+  const router = new OpenAPIHono({
+    strict: false,
+    defaultHook,
+  });
+
+  return router;
 }
 
-export default function createApp(){
-    const app = createRouter();
-    app.use('*', pinoLogger);
-    app.notFound(notFoundResponse);
-    app.onError(internalServerErrorResponse);   
-    return app;
+export default function createApp() {
+  const app = createRouter();
+
+  app.use("*", pinoLogger);
+  app.notFound(notFoundResponse);
+  app.onError(internalServerErrorResponse);
+
+  return app;
 }

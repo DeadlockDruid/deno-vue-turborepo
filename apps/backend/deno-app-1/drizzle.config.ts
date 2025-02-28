@@ -5,6 +5,6 @@ export default defineConfig({
   schema: "./src/database/schema/task-schema.ts",
   dialect: "postgresql",
   dbCredentials: {
-    url: 'postgresql://postgres:Master@123@localhost:5432/mercyHealthLocal',
+    url: "postgresql://postgres:password@localhost:5432/mercy_db",
   },
 });
