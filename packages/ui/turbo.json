@@ -1,0 +1,80 @@
+{
+    "$schema": "https://turbo.build/schema.json",
+    "extends": ["//"],
+    "tasks": {
+      "build": {
+        "dependsOn": ["^build"],
+        "outputs": ["dist/**"],
+        "inputs": [
+          "$TURBO_DEFAULT$",
+          "!node_modules",
+          "!eslint.config.js",
+          "!**/*.md",
+          "!**/*.d.ts"
+        ],
+        "cache": true
+      },
+      "lint": {
+        "outputs": [],
+        "inputs": [
+          "$TURBO_DEFAULT$",
+          "!**/*.md",
+          "!tsconfig.json",
+          "!node_modules"
+        ],
+        "cache": true
+      },
+      "test": {
+        "outputs": [],
+        "inputs": [
+          "$TURBO_DEFAULT$",
+          "!**/*.md",
+          "!tsconfig.json",
+          "!node_modules"
+        ],
+        "cache": true
+      },
+      "test:coverage": {
+        "outputs": [],
+        "inputs": [
+          "$TURBO_DEFAULT$",
+          "!**/*.md",
+          "!tsconfig.json",
+          "!node_modules"
+        ],
+        "cache": true
+      },
+      "check-types": {
+        "outputs": [],
+        "inputs": ["$TURBO_DEFAULT$", "!**/*.md", "!node_modules"],
+        "cache": true
+      },
+      "format": {
+        "outputs": [],
+        "inputs": [
+          "$TURBO_DEFAULT$",
+          "!**/*.md",
+          "!tsconfig.json",
+          "!node_modules"
+        ],
+        "cache": true
+      },
+      "deploy": {
+        "outputs": [],
+        "cache": false
+      },
+      "sonar": {
+        "outputs": [],
+        "cache": false
+      },
+      "codeql-run-analysis": {
+        "outputs": [],
+        "cache": false
+      },
+      "codeql-upload-result": {
+        "outputs": [],
+        "cache": false
+      }
+    }
+  }
+  
