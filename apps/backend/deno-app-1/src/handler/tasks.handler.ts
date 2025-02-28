@@ -6,7 +6,7 @@ import type {
   RemoveTask,
   PatchTask,
 } from "../routes/tasks/tasks.routes.ts";
-import { tasks } from "../database/schema/task-schema.ts";
+import { tasks,taskPatchSchema, createTaskSchema, idParamsSchema } from "../database/schema/task-schema.ts";
 import { db } from "../database/index.ts";
 import { CONSTANTS } from "../utils/helpers/constant.ts";
 import {
@@ -32,8 +32,8 @@ export const listTask: RouteHandler<ListTaskRoute> = async (c) => {
 
 export const createTask: RouteHandler<CreateTask> = async (c) => {
   try {
-    // const task = await c.req.json();
-    const task = await c.req.valid("json"); //z
+    const body = await c.req.json();
+    const task = createTaskSchema.parse(body)
     if (!task || typeof task !== "object") {
       throw new Error(CONSTANTS.ERROR.INVALID_REQUEST_DATA);
     }
@@ -55,8 +55,15 @@ export const createTask: RouteHandler<CreateTask> = async (c) => {
 
 export const getTask: RouteHandler<GetTask> = async (c) => {
   try {
-    const { id } = c.req.valid("param");
-
+    // const { id } = c.req.valid("param");
+    const id = c.req.param("id");
+    const parsedId = idParamsSchema.safeParse({ id });
+    if (!parsedId.success) {
+        return c.json(
+            badRequestResponse,
+            CONSTANTS.STATUS_CODES.BAD_REQUEST
+        );
+    }
     const task = await db.query.tasks.findFirst({
       where: eq(tasks.id, id),
     });
@@ -79,7 +86,14 @@ export const getTask: RouteHandler<GetTask> = async (c) => {
 
 export const removeTask: RouteHandler<RemoveTask> = async (c) => {
   try {
-    const { id } = c.req.valid("param");
+    const id = c.req.param("id");
+    const parsedId = idParamsSchema.safeParse({ id });
+    if (!parsedId.success) {
+        return c.json(
+            badRequestResponse,
+            CONSTANTS.STATUS_CODES.BAD_REQUEST
+        );
+    }
     const result = await db.delete(tasks).where(eq(tasks.id, id)).returning();
     if (!result || !result.length) {
       return c.json(
@@ -100,11 +114,22 @@ export const removeTask: RouteHandler<RemoveTask> = async (c) => {
 export const patchTask: RouteHandler<PatchTask> = async (c) => {
   try {
     const updates = await c.req.json();
-    const { id } = c.req.valid("param");
+    const id  = c.req.param("id");
+    const parsedId = idParamsSchema.safeParse({ id });
+    if (!parsedId.success) {
+        return c.json(
+            badRequestResponse,
+            CONSTANTS.STATUS_CODES.BAD_REQUEST
+        );
+    }
+    const task = taskPatchSchema.parse(updates);
+    if (!task || typeof task !== "object") {
+        throw new Error(CONSTANTS.ERROR.INVALID_REQUEST_DATA);
+      }
     // Update the task in the database
     const updatedTask = await db
       .update(tasks)
-      .set(updates)
+      .set(task)
       .where(eq(tasks.id, id))
       .returning();
 

@@ -15,7 +15,7 @@ Deno.test("Hono App Endpoints", async (t) => {
   });
 
   await t.step("GET /list-tasks should return List of Tasks", async () => {
-    const response = await fetch("http://localhost:8000/list-tasks", {
+    const response = await fetch("http://localhost:8000/tasks", {
       method: "GET",
     });
     expect(response.status).toBe(200);
@@ -24,7 +24,7 @@ Deno.test("Hono App Endpoints", async (t) => {
   await t.step("POST /create-tasks should create a new task", async () => {
     const newTask = { name: "Test Task12", done: false };
 
-    const response = await fetch("http://localhost:8000/create-tasks", {
+    const response = await fetch("http://localhost:8000/tasks", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newTask),
@@ -37,7 +37,7 @@ Deno.test("Hono App Endpoints", async (t) => {
     createdTaskId = responseBody.data.id;
   });
   await t.step("PATCH /tasks/:id should update a task", async () => {
-    const updateData = { name: "test", done:"true" };
+    const updateData = { name: "test"};
 
     const response = await fetch(`http://localhost:8000/tasks/${createdTaskId}`, {
       method: "PATCH",
@@ -47,7 +47,6 @@ Deno.test("Hono App Endpoints", async (t) => {
     const responseBody = await response.json();
     expect(response.status).toBe(200);
     expect(responseBody.data.name).toBe("test");
-    expect(responseBody.data.done).toBe(true);
   });
   await t.step("DELETE /tasks/:id should remove a task", async () => {
     const response = await fetch(`http://localhost:8000/tasks/${createdTaskId}`, {

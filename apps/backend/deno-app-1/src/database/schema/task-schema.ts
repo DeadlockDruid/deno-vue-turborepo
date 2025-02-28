@@ -11,6 +11,10 @@ export const tasks = pgTable("tasks", {
 
 //select schema record
 export const taskSelectSchema = createSelectSchema(tasks);
+export const createTaskSchema = z.object({
+  name: z.string().min(1), 
+  done: z.boolean().optional()
+});
 export const idParamsSchema = z.object({
   id: z.coerce.number().openapi({
     param: {

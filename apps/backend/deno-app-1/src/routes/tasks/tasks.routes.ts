@@ -2,11 +2,8 @@ import { createRoute, z } from "@hono/zod-openapi";
 import { openAPIJsonContent } from "../../utils/commonFunction.ts";
 import { CONSTANTS } from "../../utils/helpers/constant.ts";
 import {
-  taskSelectSchema,
-  idParamsSchema,
-  taskPatchSchema,
+  taskSelectSchema
 } from "../../database/schema/task-schema.ts";
-import { jsonContentRequired } from "stoker/openapi/helpers";
 import { OPEN_API_DOC_MESSAGE } from "../open-api.message.ts";
 const tags = ["Tasks"];
 
@@ -34,15 +31,6 @@ export const createTask = createRoute({
   path: "/",
   method: "post",
   tags,
-  request: {
-    body: jsonContentRequired(
-      z.object({
-        name: z.string().min(1),
-        done: z.boolean().optional(),
-      }),
-      OPEN_API_DOC_MESSAGE.TASK.CREATE_TASK,
-    ),
-  },
   responses: {
     [CONSTANTS.STATUS_CODES.OK]: openAPIJsonContent(
       taskSelectSchema,
@@ -68,12 +56,9 @@ export const createTask = createRoute({
 });
 
 export const getTask = createRoute({
-  path: "/:id",
+  path: "/{id}",
   method: "get",
   tags,
-  request: {
-    params: idParamsSchema,
-  },
   responses: {
     [CONSTANTS.STATUS_CODES.OK]: openAPIJsonContent(
       taskSelectSchema,
@@ -102,9 +87,6 @@ export const removeTask = createRoute({
   path: "/{id}",
   method: "delete",
   tags,
-  request: {
-    params: idParamsSchema,
-  },
   responses: {
     [CONSTANTS.STATUS_CODES.NO_CONTENT]: {
       description: OPEN_API_DOC_MESSAGE.TASK.DELETED_TASK,
@@ -141,13 +123,6 @@ export const patchTask = createRoute({
   path: "/{id}",
   method: "patch",
   tags,
-  request: {
-    params: idParamsSchema,
-    body: jsonContentRequired(
-      taskPatchSchema,
-      OPEN_API_DOC_MESSAGE.TASK.UPDATE_TASK,
-    ),
-  },
   responses: {
     [CONSTANTS.STATUS_CODES.OK]: openAPIJsonContent(
       taskSelectSchema,

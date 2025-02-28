@@ -13,6 +13,7 @@ export const OPEN_API_DOC_MESSAGE = {
     INDEX_API_NAME: "MercyHealth API Index",
     INDEX_API_MESSAGE: "MercyHealth APIs",
     TASK_APIS: "Task APIs",
+    GET_TASK: "Get Task by ID"
   },
 };
 
