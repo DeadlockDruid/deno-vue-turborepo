@@ -1,19 +1,19 @@
 {
-  "name": "my-app",
+  "name": "frontend-boilerplate",
   "version": "0.0.0",
   "private": true,
   "type": "module",
   "scripts": {
     "build": "vue-tsc -b tsconfig.app.json && vite build",
     "check-types": "tsc --noEmit",
-    "codeql-run-analysis": "codeql database create ./codeql-database --language=javascript-typescript --source-root=. --overwrite && codeql database analyze ./codeql-database codeql/javascript-queries:codeql-suites/javascript-code-scanning.qls --format=sarif-latest --output=./codeql-database/my-app.sarif --sarif-category=my-app --threads=0 --sarif-add-baseline-file-info --verbose",
-    "codeql-upload-result": "codeql github upload-results --sarif=./codeql-database/my-app.sarif --github-url=https://github.com/ --repository=${GITHUB_REPOSITORY} --ref=${GITHUB_REF} --commit=${GITHUB_SHA}",
+    "codeql-run-analysis": "codeql database create ./codeql-database --language=javascript-typescript --source-root=. --overwrite && codeql database analyze ./codeql-database codeql/javascript-queries:codeql-suites/javascript-code-scanning.qls --format=sarif-latest --output=./codeql-database/frontend-boilerplate.sarif --sarif-category=frontend-boilerplate --threads=0 --sarif-add-baseline-file-info --verbose",
+    "codeql-upload-result": "codeql github upload-results --sarif=./codeql-database/frontend-boilerplate.sarif --github-url=https://github.com/ --repository=${GITHUB_REPOSITORY} --ref=${GITHUB_REF} --commit=${GITHUB_SHA}",
     "deploy": "swa deploy --config swa-cli.config.json --deployment-token=$DEPLOY_TOKEN_MY-APP",
     "dev": "NODE_ENV=development vite",
     "format": "prettier --write .",
     "lint": "eslint .",
     "preview": "vite preview",
-    "sonar": "sonar-scanner -Dsonar.projectKey=MY-APP -Dsonar.projectName=MY-APP -Dsonar.organization=divyanshu-startup -Dsonar.sources=./src -Dsonar.tests=./src/tests -Dsonar.test.inclusions=**/*.spec.ts -Dsonar.host.url=https://sonarcloud.io -Dsonar.token=$SONAR_MY-APP",
+    "sonar": "sonar-scanner -Dsonar.projectKey=FRONTEND-BOILERPLATE -Dsonar.projectName=FRONTEND-BOILERPLATE -Dsonar.organization=divyanshu-startup -Dsonar.sources=./src -Dsonar.tests=./src/tests -Dsonar.test.inclusions=**/*.spec.ts -Dsonar.host.url=https://sonarcloud.io -Dsonar.token=$SONAR_MY-APP",
     "test": "vitest --run",
     "test:coverage": "vitest --coverage --run"
   },

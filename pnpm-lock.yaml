@@ -41,7 +41,7 @@ importers:
 
   apps/backend/deno-app-2: {}
 
-  apps/frontend/my-app:
+  apps/frontend/frontend-boilerplate:
     dependencies:
       '@repo/ui':
         specifier: workspace:*

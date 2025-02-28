@@ -1,24 +1,15 @@
 import authRoutes from '@/modules/auth/routes'
 import dashboardRoutes from '@/modules/dashboard/routes'
 import { createRouter, createWebHistory } from 'vue-router'
-
+ 
 const routes = [
   ...authRoutes,
-<<<<<<< HEAD
-  ...dashboardRoutes,
-  {
-    path: '/shadcn',
-    name: 'Shadcn comps',
-    component: () => import('../components/Shadcn.vue'),
-  },
-=======
   ...dashboardRoutes
->>>>>>> d04ade7 (Add frontend boilerplate in monorepo)
 ]
-
+ 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes
 })
-
+ 
 export default router

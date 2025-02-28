@@ -13,7 +13,8 @@
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
-    "./styles.css": "./dist/style.css"
+    "./styles.css": "./dist/style.css",
+    "./tailwind-config": "./tailwind.config.js"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.js",

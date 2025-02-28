@@ -17,7 +17,6 @@ const isOpen = ref(false) // Toggle state for mobile menu
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
         <router-link to="/" class="text-white hover:underline"> Dashboard </router-link>
-        <router-link to="/shadcn" class="text-white hover:underline"> Shadcn </router-link>
         <router-link to="/login" class="text-white hover:underline"> Login </router-link>
       </div>
 
