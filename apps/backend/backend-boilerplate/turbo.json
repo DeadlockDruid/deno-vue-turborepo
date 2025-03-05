@@ -1,0 +1,124 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "extends": [
+    "//"
+  ],
+  "tasks": {
+    "build": {
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        "dist/bundle.js"
+      ],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "!**/*.md",
+        "!**/*.{spec,test}.{js,ts,jsx,tsx,snap}",
+        "!package.json",
+        "!turbo.json",
+        "!test_setup.{js,ts}",
+        "!node_modules/**"
+      ],
+      "cache": true
+    },
+    "lint": {
+      "outputs": [],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "!**/*.md",
+        "!**/*.{spec,test}.{js,ts,jsx,tsx,snap}",
+        "!package.json",
+        "!turbo.json",
+        "!test_setup.{js,ts}",
+        "!node_modules/**"
+      ],
+      "cache": true
+    },
+    "test": {
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "!**/*.md",
+        "!package.json",
+        "!turbo.json",
+        "!node_modules/**"
+      ],
+      "outputs": [
+        "coverage/**"
+      ],
+      "cache": true
+    },
+    "test:coverage": {
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "!**/*.md",
+        "!package.json",
+        "!turbo.json",
+        "!node_modules/**"
+      ],
+      "outputs": [
+        "coverage/**"
+      ],
+      "cache": true
+    },
+    "check-types": {
+      "outputs": [],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "!**/*.md",
+        "!package.json",
+        "!turbo.json",
+        "!test_setup.{js,ts}",
+        "!deno.json",
+        "!deno.lock",
+        "!node_modules/**"
+      ],
+      "cache": true
+    },
+    "format": {
+      "outputs": [],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "!**/*.md",
+        "!**/*.{spec,test}.{js,ts,jsx,tsx,snap}",
+        "!package.json",
+        "!turbo.json",
+        "!deno.json",
+        "!deno.lock",
+        "!node_modules/**"
+      ],
+      "cache": true
+    },
+    "deploy": {
+      "cache": false,
+      "outputs": []
+    },
+    "sonar": {
+      "outputs": [],
+      "env": [
+        "SONAR_DENO_APP_1"
+      ],
+      "cache": false
+    },
+    "codeql-run-analysis": {
+      "outputs": [],
+      "cache": false
+    },
+    "codeql-upload-result": {
+      "outputs": [],
+      "env": [
+        "GITHUB_TOKEN",
+        "GITHUB_REPOSITORY",
+        "GITHUB_REF",
+        "GITHUB_SHA"
+      ],
+      "cache": false
+    }
+  }
+}

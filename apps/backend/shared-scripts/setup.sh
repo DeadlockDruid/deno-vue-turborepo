@@ -104,4 +104,4 @@ if [ ! -f "${APP_DIR}/${BUNDLE_FILE}" ]; then
 fi
 
 # Start the Deno app
-deno run --allow-net --allow-env --allow-sys "${APP_DIR}/${BUNDLE_FILE}"
+deno run --allow-net --allow-env --allow-sys --allow-read "${APP_DIR}/${BUNDLE_FILE}"

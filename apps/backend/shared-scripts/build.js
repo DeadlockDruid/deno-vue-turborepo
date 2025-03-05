@@ -22,6 +22,7 @@ await esbuild.build({
   plugins: [
     ...denoPlugins({
       importMapURL: importMapPath, // Resolved absolute file URL
+      nodeModulesDir: "auto",
     }),
   ],
   entryPoints: [entryPointPath], // Resolved absolute entry point path
@@ -30,6 +31,18 @@ await esbuild.build({
   format: "esm",
   platform: "neutral", // Ensure Deno compatibility
   treeShaking: true,
+  external: [
+    // Mark failing build time npm dependencies as external so Deno can resolve them at runtime
+    "drizzle-orm",
+    "@asteasolutions/zod-to-openapi",
+    "@hono/zod-openapi",
+    "pg",
+    "pino",
+    "hono/html",
+    "zod",
+    "vue-demi",
+    "@scalar/api-reference/lib/html-rendering",
+  ],
 });
 
 console.log(`Build completed: ${outputDirPath}/bundle.js`);

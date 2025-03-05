@@ -1,0 +1,16 @@
+{
+  "name": "backend-boilerplate",
+  "dependencies": {
+    "@repo/pino-logger": "workspace:*",
+    "@repo/zod-schemas": "workspace:*"
+  },
+  "private": true,
+  "scripts": {
+    "build": "rm -rf dist/* && deno run --allow-read --allow-write --allow-net --allow-env --allow-run ../shared-scripts/build.js --import-map ../shared_import_map.json --output-dir ./dist --entry-point ./main.ts",
+    "deploy": "bash ../shared-scripts/deploy_deno.sh --resource-group mvpsso --web-app-name deno-app-1",
+    "dev": "deno task start",
+    "format": "deno task fmt",
+    "lint": "deno lint --config deno.json",
+    "test": "deno test --allow-env --allow-net --allow-sys --allow-read --coverage=coverage/ --permit-no-files tests/** --no-check"
+  }
+}

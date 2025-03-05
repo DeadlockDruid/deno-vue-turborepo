@@ -1,0 +1,151 @@
+{
+    "$schema": "https://turbo.build/schema.json",
+    "extends": ["//"],
+    "tasks": {
+      "build": {
+        "dependsOn": ["^build"],
+        "outputs": ["dist/**"],
+        "env": ["NODE_ENV"],
+        "inputs": [
+          "$TURBO_DEFAULT$",
+          "!vite.config.ts",
+          "!vitest.config.ts",
+          "!eslint.config.js",
+          "!tsconfig.node.json",
+          "!tsconfig.spec.json",
+          "!**/*.spec.ts",
+          "!**/*.test.ts",
+          "!**/*.md",
+          "!**/docs/**",
+          "!**/notes/**",
+          "!**/*.d.ts",
+          "!swa-cli.config.json",
+          "!eslint.config.js",
+          "!node_modules/**"
+        ],
+        "cache": true
+      },
+      "lint": {
+        "outputs": [],
+        "inputs": [
+          "$TURBO_DEFAULT$",
+          "!tsconfig.json",
+          "!tsconfig.app.json",
+          "!tsconfig.node.json",
+          "!tsconfig.spec.json",
+          "!**/*.spec.ts",
+          "!**/*.test.ts",
+          "!**/*.md",
+          "!**/docs/**",
+          "!**/notes/**",
+          "!vite.config.ts",
+          "!vitest.config.ts",
+          "!**/*.d.ts",
+          "!swa-cli.config.json",
+          "!node_modules/**"
+        ],
+        "cache": true
+      },
+      "format": {
+        "outputs": [],
+        "inputs": [
+          "$TURBO_DEFAULT$",
+          "!tsconfig.json",
+          "!tsconfig.app.json",
+          "!tsconfig.node.json",
+          "!tsconfig.spec.json",
+          "!**/*.spec.ts",
+          "!**/*.test.ts",
+          "!**/*.md",
+          "!**/docs/**",
+          "!**/notes/**",
+          "!pnpm-lock.yaml",
+          "!vite.config.ts",
+          "!vitest.config.ts",
+          "!**/*.d.ts",
+          "!swa-cli.config.json",
+          "!eslint.config.js",
+          "!node_modules/**"
+        ],
+        "cache": true
+      },
+      "test": {
+        "dependsOn": ["^build"],
+        "outputs": ["coverage/**"],
+        "inputs": [
+          "$TURBO_DEFAULT$",
+          "!tsconfig.json",
+          "!tsconfig.node.json",
+          "!tsconfig.app.json",
+          "!**/*.md",
+          "!**/docs/**",
+          "!**/notes/**",
+          "!vite.config.ts",
+          "!**/*.d.ts",
+          "!swa-cli.config.json",
+          "!eslint.config.js",
+          "!node_modules/**"
+        ],
+        "cache": true
+      },
+      "test:coverage": {
+        "dependsOn": ["^build"],
+        "outputs": ["coverage/**"],
+        "inputs": [
+          "$TURBO_DEFAULT$",
+          "!tsconfig.json",
+          "!tsconfig.node.json",
+          "!tsconfig.app.json",
+          "!**/*.md",
+          "!**/docs/**",
+          "!**/notes/**",
+          "!vite.config.ts",
+          "!**/*.d.ts",
+          "!swa-cli.config.json",
+          "!eslint.config.js",
+          "!node_modules/**"
+        ],
+        "cache": true
+      },
+      "check-types": {
+        "outputs": ["out-tsc/**"],
+        "inputs": [
+          "$TURBO_DEFAULT$",
+          "!tsconfig.json",
+          "!tsconfig.app.json",
+          "!tsconfig.node.json",
+          "!tsconfig.spec.json",
+          "!**/*.spec.ts",
+          "!**/*.test.ts",
+          "!**/*.md",
+          "!**/docs/**",
+          "!**/notes/**",
+          "!vite.config.ts",
+          "!vitest.config.ts",
+          "!**/*.d.ts",
+          "!swa-cli.config.json",
+          "!eslint.config.js",
+          "!node_modules/**"
+        ],
+        "cache": true
+      },
+      "deploy": {
+        "cache": false
+      },
+      "sonar": {
+        "outputs": [],
+        "env": ["SONAR_MY-APP"],
+        "cache": false
+      },
+      "codeql-run-analysis": {
+        "outputs": [],
+        "cache": false
+      },
+      "codeql-upload-result": {
+        "outputs": [],
+        "env": ["GITHUB_TOKEN", "GITHUB_REPOSITORY", "GITHUB_REF", "GITHUB_SHA"],
+        "cache": false
+      }
+    }
+  }
+  

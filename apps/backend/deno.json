@@ -1,5 +1,5 @@
 {
-  "workspace": ["./deno-app-1", "./deno-app-2"],
+  "workspace": ["./backend-boilerplate"],
   "importMap": "./shared_import_map.json",
   "tasks": {
     "lint": "deno lint",
@@ -10,5 +10,6 @@
     "jsx": "precompile",
     "jsxImportSource": "hono/jsx",
     "strict": true
-  }
+  },
+  "nodeModulesDir": "auto"
 }
